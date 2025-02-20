@@ -214,7 +214,7 @@ pub unsafe fn EventDescCreate(
 }
 #[inline]
 pub unsafe fn EventDescZero(EventDescriptor: PEVENT_DESCRIPTOR) {
-    use core::ptr::write_bytes;
+    use std::ptr::write_bytes;
     // FIXME: 16 = sizeof::<EVENT_DESCRIPTOR>()
     write_bytes(EventDescriptor, 0, 16);
 }

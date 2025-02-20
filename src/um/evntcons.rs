@@ -165,7 +165,7 @@ unsafe fn strnlen(s: PCSTR, max_len: isize) -> isize {
 // Taken from Rust 1.17.0 sources
 #[inline]
 unsafe fn read_unaligned<T>(src: *const T) -> T {
-    use core::{mem, ptr};
+    use std::{mem, ptr};
     let mut tmp: T = mem::uninitialized();
     ptr::copy_nonoverlapping(
         src as *const u8,
@@ -178,7 +178,7 @@ unsafe fn read_unaligned<T>(src: *const T) -> T {
 pub unsafe fn EtwGetTraitFromProviderTraits(
     ProviderTraits: PVOID, TraitType: UCHAR, Trait: *mut PVOID, Size: PUSHORT,
 ) {
-    use core::ptr::null_mut;
+    use std::ptr::null_mut;
     let ByteCount = read_unaligned(ProviderTraits as *mut USHORT) as isize;
     let mut Ptr = ProviderTraits as PUCHAR;
     let PtrEnd = Ptr.offset(ByteCount);

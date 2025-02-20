@@ -7459,22 +7459,22 @@ pub const COMPRESSION_ENGINE_HIBER: USHORT = 0x0200;
 // RtlEqualMemory
 #[inline]
 pub unsafe fn RtlMoveMemory(Destination: *mut c_void, Source: *const c_void, Length: usize) {
-    use core::ptr::copy;
+    use std::ptr::copy;
     copy(Source as *const u8, Destination as *mut u8, Length);
 }
 #[inline]
 pub unsafe fn RtlCopyMemory(Destination: *mut c_void, Source: *const c_void, Length: usize) {
-    use core::ptr::copy_nonoverlapping;
+    use std::ptr::copy_nonoverlapping;
     copy_nonoverlapping(Source as *const u8, Destination as *mut u8, Length);
 }
 #[inline]
 pub unsafe fn RtlFillMemory(Destination: *mut c_void, Length: usize, Fill: u8) {
-    use core::ptr::write_bytes;
+    use std::ptr::write_bytes;
     write_bytes(Destination as *mut u8, Fill, Length);
 }
 #[inline]
 pub unsafe fn RtlZeroMemory(Destination: *mut c_void, Length: usize) {
-    use core::ptr::write_bytes;
+    use std::ptr::write_bytes;
     write_bytes(Destination as *mut u8, 0, Length);
 }
 pub const SEF_DACL_AUTO_INHERIT: ULONG = 0x01;

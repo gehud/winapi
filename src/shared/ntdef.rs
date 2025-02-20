@@ -414,7 +414,7 @@ pub unsafe fn InitializeObjectAttributes(
     r: HANDLE,
     s: PVOID,
 ) {
-    use core::mem::size_of;
+    use std::mem::size_of;
     (*p).Length = size_of::<OBJECT_ATTRIBUTES>() as ULONG;
     (*p).RootDirectory = r;
     (*p).Attributes = a;
