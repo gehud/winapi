@@ -22,7 +22,12 @@ winapi-i686-pc-windows-gnu = { version = "0.4", path = "i686" }
 [target.x86_64-pc-windows-gnu.dependencies]
 winapi-x86_64-pc-windows-gnu = { version = "0.4", path = "x86_64" }
 
+[lib]
+crate-type = ["rlib", "dylib"]
+
 [features]
+default = ["std"]
+
 debug = ["impl-debug"]
 everything = []
 impl-debug = []
