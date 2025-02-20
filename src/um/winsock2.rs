@@ -875,23 +875,23 @@ pub fn ntohll(Value: __uint64) -> __uint64 {
 }
 #[inline]
 pub fn htonf(Value: c_float) -> __uint32 {
-    let Tempval: __uint32 = unsafe { ::core::mem::transmute(Value) };
+    let Tempval: __uint32 = unsafe { ::std::mem::transmute(Value) };
     _WS2_32_WINSOCK_SWAP_LONG(Tempval)
 }
 #[inline]
 pub fn ntohf(Value: __uint32) -> c_float {
     let Tempval = _WS2_32_WINSOCK_SWAP_LONG(Value);
-    unsafe { ::core::mem::transmute(Tempval) }
+    unsafe { ::std::mem::transmute(Tempval) }
 }
 #[inline]
 pub fn htond(Value: c_double) -> __uint64 {
-    let Tempval: __uint64 = unsafe { ::core::mem::transmute(Value) };
+    let Tempval: __uint64 = unsafe { ::std::mem::transmute(Value) };
     _WS2_32_WINSOCK_SWAP_LONGLONG(Tempval)
 }
 #[inline]
 pub fn ntohd(Value: __uint64) -> c_double {
     let Tempval = _WS2_32_WINSOCK_SWAP_LONGLONG(Value);
-    unsafe { ::core::mem::transmute(Tempval) }
+    unsafe { ::std::mem::transmute(Tempval) }
 }
 extern "system" {
     pub fn listen(

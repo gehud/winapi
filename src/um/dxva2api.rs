@@ -674,7 +674,7 @@ extern "system" {
 #[inline]
 pub fn DXVA2FloatToFixed(_float_: c_float) -> DXVA2_Fixed32 {
     unsafe {
-        let mut _fixed_: DXVA2_Fixed32 = ::core::mem::uninitialized();
+        let mut _fixed_: DXVA2_Fixed32 = ::std::mem::uninitialized();
         _fixed_.s_mut().Fraction = LOWORD((_float_ * 0x10000 as c_float) as DWORD);
         _fixed_.s_mut().Value = HIWORD((_float_ * 0x10000 as c_float) as DWORD) as SHORT;
         _fixed_
@@ -689,7 +689,7 @@ pub fn DXVA2FixedToFloat(_fixed_: DXVA2_Fixed32) -> c_float {
 #[inline]
 pub fn DXVA2_Fixed32TransparentAlpha() -> DXVA2_Fixed32 {
     unsafe {
-        let mut _fixed_: DXVA2_Fixed32 = ::core::mem::uninitialized();
+        let mut _fixed_: DXVA2_Fixed32 = ::std::mem::uninitialized();
         _fixed_.s_mut().Fraction = 0;
         _fixed_.s_mut().Value = 0;
         _fixed_
@@ -698,7 +698,7 @@ pub fn DXVA2_Fixed32TransparentAlpha() -> DXVA2_Fixed32 {
 #[inline]
 pub fn DXVA2_Fixed32OpaqueAlpha() -> DXVA2_Fixed32 {
     unsafe {
-        let mut _fixed_: DXVA2_Fixed32 = ::core::mem::uninitialized();
+        let mut _fixed_: DXVA2_Fixed32 = ::std::mem::uninitialized();
         _fixed_.s_mut().Fraction = 0;
         _fixed_.s_mut().Value = 1;
         _fixed_

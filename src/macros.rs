@@ -204,7 +204,7 @@ macro_rules! RIDL {
         RIDL!{@uuid $interface $($uuid),+}
     );
     (@deref $interface:ident $pinterface:ident) => (
-        impl $crate::_core::ops::Deref for $interface {
+        impl $crate::std::ops::Deref for $interface {
             type Target = $pinterface;
             #[inline]
             fn deref(&self) -> &$pinterface {
@@ -219,7 +219,7 @@ macro_rules! RIDL {
     );
     (@method #[fixme] fn $method:ident($($p:ident : $t:ty,)*) -> $rtr:ty) => (
         #[inline] pub unsafe fn $method(&self, $($p: $t,)*) -> $rtr {
-            let mut ret = $crate::_core::mem::uninitialized();
+            let mut ret = $crate::std::mem::uninitialized();
             ((*self.lpVtbl).$method)(self as *const _ as *mut _, &mut ret, $($p,)*);
             ret
         }
@@ -292,7 +292,7 @@ macro_rules! UNION {
         #[cfg(feature = "impl-default")]
         impl Default for $name {
             #[inline]
-            fn default() -> $name { unsafe { $crate::_core::mem::zeroed() } }
+            fn default() -> $name { unsafe { $crate::std::mem::zeroed() } }
         }
         impl $name {$(
             #[inline]
@@ -321,7 +321,7 @@ macro_rules! UNION {
         #[cfg(feature = "impl-default")]
         impl Default for $name {
             #[inline]
-            fn default() -> $name { unsafe { $crate::_core::mem::zeroed() } }
+            fn default() -> $name { unsafe { $crate::std::mem::zeroed() } }
         }
         impl $name {$(
             #[inline]
@@ -342,7 +342,7 @@ macro_rules! BITFIELD {
         impl $base {$(
             #[inline]
             pub fn $thing(&self) -> $fieldtype {
-                let size = $crate::core::mem::size_of::<$fieldtype>() * 8;
+                let size = $crate::std::mem::size_of::<$fieldtype>() * 8;
                 self.$field << (size - $r.end) >> (size - $r.end + $r.start)
             }
             #[inline]
@@ -397,7 +397,7 @@ macro_rules! STRUCT {
         #[cfg(feature = "impl-default")]
         impl Default for $name {
             #[inline]
-            fn default() -> $name { unsafe { $crate::_core::mem::zeroed() } }
+            fn default() -> $name { unsafe { $crate::std::mem::zeroed() } }
         }
     );
 }

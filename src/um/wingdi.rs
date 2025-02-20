@@ -606,7 +606,7 @@ pub type LPBITMAPFILEHEADER = *mut BITMAPFILEHEADER;
 pub type PBITMAPFILEHEADER = *mut BITMAPFILEHEADER;
 #[inline]
 pub fn MAKEPOINTS(l: DWORD) -> POINTS {
-    unsafe { ::core::mem::transmute::<DWORD, POINTS>(l) }
+    unsafe { ::std::mem::transmute::<DWORD, POINTS>(l) }
 }
 STRUCT!{#[debug] struct FONTSIGNATURE {
     fsUsb: [DWORD; 4],
